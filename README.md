@@ -4,12 +4,12 @@ A social media platform for sharing recipes and meal ideas
 FoodFactor is a social media platform for food enthusiasts to share and discover new recipes. Users can sign up, log in, and create a profile. They can then create, read, update, and delete recipes, and share them with others. Users can also search for recipes based on keywords, ingredients, or categories.
 
 # Technologies Used
-FoodFactor is built using the following technologies:
-- Django: Python web framework
-- Django REST framework: toolkit for building APIs with Django
-- PostgreSQL: database management system
-- Bootstrap: front-end framework
-- HTML, CSS, JavaScript: front-end languages
+FoodFactor is built using the MERN stack of technologies:
+- MongoDB for the database
+- Express.js for the server
+- React.js for the client
+- Node.js for the backend
+- Bootstrap 5 for the UI
 
 # User Interactions and Features:
 ### As A User You will be able to:
@@ -58,3 +58,5 @@ To run FoodFactor on your local machine, follow these steps:
 - A recipe can have many ingredients, and an ingredient can be used in many recipes (many-to-many relationship).
 
 Each entity has its own set of attributes that define the information that can be stored in it. For example, the users entity has attributes like username, email, and password that store user account information, while the recipes entity has attributes like title, description, and image that store recipe details.
+
+# Routes
