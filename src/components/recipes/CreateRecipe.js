@@ -15,8 +15,8 @@ const CreateRecipe = (props) => {
     console.log('this is navigate', navigate)
 
     const [recipe, setRecipe] = useState({
-        Username: '',
-        Description: '',
+        RecipeName: '',
+        Caption: '',
         ImageUrl: '',
         
     })
@@ -60,6 +60,7 @@ const CreateRecipe = (props) => {
         createRecipe(user, recipe)
             // first we'll nav to the show page
             .then(res => { navigate(`/recipes/${res.data.recipes.id}`)})
+            console.log(recipe.id)
             // we'll also send a success message
             .then(() => {
                 msgAlert({

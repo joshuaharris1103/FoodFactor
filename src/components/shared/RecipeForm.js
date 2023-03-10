@@ -11,8 +11,8 @@ const recipeForm = (props) => {
                     <Form.Label>Recipe Name:</Form.Label>
                     <Form.Control 
                         placeholder="What is your recipe's name?"
-                        name="username"
-                        id="username"
+                        name="name"
+                        id="name"
                         value={ recipe?.username }
                         onChange={handleChange}
                     />
@@ -21,8 +21,8 @@ const recipeForm = (props) => {
                     <Form.Label>Caption:</Form.Label>
                     <Form.Control 
                         placeholder="Add a caption"
-                        name="description"
-                        id="description"
+                        name="caption"
+                        id="caption"
                         value={ recipe?.description }
                         onChange={handleChange}
                     />
@@ -30,7 +30,7 @@ const recipeForm = (props) => {
                 <Form.Group className="m-2">
                     <Form.Label>ImageUrl:</Form.Label>
                     <Form.Control 
-                        type="number"
+                        type="string"
                         placeholder="Will Add Photo Functionality here soon..."
                         name="imageUrl"
                         id="imageUrl"

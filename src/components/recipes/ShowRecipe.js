@@ -44,8 +44,8 @@ const ShowRecipe = (props) => {
                     <Card.Header>{ recipe.fullTitle }</Card.Header>
                     <Card.Body>
                         <Card.Text>
-                            <div><small>Username: { recipe.username }</small></div>
-                            <div><small>Description: { recipe.description }</small></div>
+                            <div><small>Recipe Name: { recipe.name }</small></div>
+                            <div><small>Caption: { recipe.caption }</small></div>
                             <div>
                                 <small>
                                     ImageUrl: { recipe.imageUrl ? 'yes' : 'no' }
