@@ -29,7 +29,7 @@ const authenticatedOptions = (
 			</Link>
 		</Nav.Link >
 		<Nav.Link className='m-2'>
-			<Link to='sign-out' style={linkStyle}>
+			<Link to='profile' style={linkStyle}>
 				Profile
 			</Link>
 		</Nav.Link>
