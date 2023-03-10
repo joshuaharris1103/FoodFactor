@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import Card from 'react-bootstrap/Card'
 import { Link } from 'react-router-dom'
+import { Avatar } from '@material-ui/core'
 
 // api function from our api file
 import { getAllRecipes } from '../../api/recipe'
@@ -23,7 +24,7 @@ const RecipeIndex = (props) => {
     console.log('these are the recipes in index', recipes)
 
     // pull the message alert (msgAlert) from props
-    const { user, msgAlert } = props
+    const { user, msgAlert, caption, imageUrl } = props
 
     // get our Recipe from the api when the component mounts
     useEffect(() => {
@@ -46,6 +47,8 @@ const RecipeIndex = (props) => {
         return <p>Error!</p>
     }
 
+    // console.log('this is owner', recipes._id)
+
     if (!recipes) {
         // if no Recipe loaded yet, display 'loading'
         return <p>...loading ...please wait</p>
@@ -58,14 +61,32 @@ const RecipeIndex = (props) => {
     // produce one card for every recipes
     
     const recipeCards = recipes.map(recipes => (
-        <Card key={ recipes.id } style={{ width: '30%', margin: 5 }}>
-            <Card.Header>{ recipes.fullTitle }</Card.Header>
-            <Card.Body>
-                <Card.Text>
-                    <Link to={`/recipes/${recipes.id}`} className="btn btn-info">View { recipes.username }</Link>
-                </Card.Text>
-            </Card.Body>
-        </Card>
+        // <Card key={ recipes.id } style={{ width: '30%', margin: 5 }}>
+        //     <Card.Header>{ recipes.fullTitle }</Card.Header>
+        //     <Card.Body>
+        //         <Card.Text>
+        //             <Link to={`/recipes/${recipes.id}`} className="btn btn-info">View { recipes.owner }</Link>
+        //         </Card.Text>
+        //     </Card.Body>
+        // </Card>
+        <div className='post'>
+        {/* header -> profile pic & username */}
+        <div className="post_header">
+            <Avatar
+                className='post_avatar'
+                alt='UserPhoto'
+                src=''
+                />
+            <h3>{recipes.owner}</h3>
+        </div>
+        
+        {/* image */}
+        <img className='post_image' src={ imageUrl } />
+        
+        {/* username & caption */}
+        <h4 className='post_text'><strong><a href='/recipes/${recipes.id}'>View { recipes.owner }</a>{/*username*/}:</strong> { caption }</h4>
+
+    </div>
     ))
     console.log('this is usernameID', recipes.id)
     // return some jsx, a container with all the recipecards
