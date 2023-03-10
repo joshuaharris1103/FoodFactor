@@ -8,33 +8,33 @@ const recipeForm = (props) => {
             <h3>{heading}</h3>
             <Form onSubmit={handleSubmit}>
                 <Form.Group className="m-2">
-                    <Form.Label>username</Form.Label>
+                    <Form.Label>Recipe Name:</Form.Label>
                     <Form.Control 
                         placeholder="What is your recipe's name?"
                         name="username"
                         id="username"
-                        value={ recipe.username }
+                        value={ recipe?.username }
                         onChange={handleChange}
                     />
                 </Form.Group>
                 <Form.Group className="m-2">
-                    <Form.Label>description</Form.Label>
+                    <Form.Label>Caption:</Form.Label>
                     <Form.Control 
-                        placeholder="What type of recipe is this?"
+                        placeholder="Add a caption"
                         name="description"
                         id="description"
-                        value={ recipe.description }
+                        value={ recipe?.description }
                         onChange={handleChange}
                     />
                 </Form.Group>
                 <Form.Group className="m-2">
-                    <Form.Label>imageUrl</Form.Label>
+                    <Form.Label>ImageUrl:</Form.Label>
                     <Form.Control 
                         type="number"
-                        placeholder="How old is your recipe?"
+                        placeholder="Will Add Photo Functionality here soon..."
                         name="imageUrl"
                         id="imageUrl"
-                        value={ recipe.imageUrl }
+                        value={ recipe?.imageUrl }
                         onChange={handleChange}
                     />
                 </Form.Group>

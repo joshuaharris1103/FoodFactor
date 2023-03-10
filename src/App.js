@@ -11,6 +11,7 @@ import SignUp from './components/auth/SignUp'
 import SignIn from './components/auth/SignIn'
 import SignOut from './components/auth/SignOut'
 import ChangePassword from './components/auth/ChangePassword'
+import CreateRecipe from './components/recipes/CreateRecipe'
 
 const App = () => {
 	
@@ -73,6 +74,13 @@ const App = () => {
 						<ChangePassword msgAlert={msgAlert} user={user} />
 					</RequireAuth>}
 				/>
+				<Route
+						path='/create-recipe'
+						element={
+						<RequireAuth user={user}>
+							<CreateRecipe msgAlert={msgAlert} user={user} />
+						</RequireAuth>}
+					/>
 			</Routes>
 			{msgAlerts.map((msgAlert) => (
 				<AutoDismissAlert

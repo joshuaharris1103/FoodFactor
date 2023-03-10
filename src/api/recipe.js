@@ -20,6 +20,8 @@ export const getOneRecipe = (id) => {
 
 // Create (create a Recipe)
 export const createRecipe = (user, newRecipe) => {
+    console.log('this is the user', user)
+    console.log('this is the newPet', newRecipe)
     return axios({
         url: `${apiUrl}/recipes`,
         method: 'POST',
