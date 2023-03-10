@@ -8,14 +8,29 @@ const linkStyle = {
 }
 const authenticatedOptions = (
 	<>
-		<Nav.Link className='m-2'>
+		{/* <Nav.Link className='m-2'>
 			<Link to='change-password' style={linkStyle}>
 				Change Password
+			</Link>
+		</Nav.Link > */}
+		<Nav.Link className='m-2'>
+			<Link to='change-password' style={linkStyle}>
+			&#127968;Home
+			</Link>
+		</Nav.Link >
+		<Nav.Link className='m-2'>
+			<Link to='change-password' style={linkStyle}>
+			&#128269;Search
+			</Link>
+		</Nav.Link >
+		<Nav.Link className='m-2'>
+			<Link to='change-password' style={linkStyle}>
+			&#128736;Create
 			</Link>
 		</Nav.Link >
 		<Nav.Link className='m-2'>
 			<Link to='sign-out' style={linkStyle}>
-				Sign Out
+				Profile
 			</Link>
 		</Nav.Link>
 	</>

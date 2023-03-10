@@ -16,19 +16,19 @@ const cardContainerStyle = {
 }
 
 // RecipeIndex will make a request to the API for all Recipe
-// once it receives a response, display a card for each recipe
+// once it receives a response, display a card for each recipes
 const RecipeIndex = (props) => {
-    const [recipe, setRecipe] = useState(null)
+    const [recipes, setRecipes] = useState(null)
     const [error, setError] = useState(false)
-    console.log('these are the recipes in index', recipe)
+    console.log('these are the recipes in index', recipes)
 
     // pull the message alert (msgAlert) from props
-    const { msgAlert } = props
+    const { user, msgAlert } = props
 
     // get our Recipe from the api when the component mounts
     useEffect(() => {
-        getAllRecipes()
-            .then(res => setRecipe(res.data.recipe))
+        getAllRecipes(user)
+            .then(res => setRecipes(res.data.recipes))
             .catch(err => {
                 msgAlert({
                     heading: 'Error getting recipes',
@@ -39,34 +39,35 @@ const RecipeIndex = (props) => {
             })
     }, [])
 
-    console.log("here are your recipes", recipe)
-
+    console.log("here are your recipes", recipes)
+    
     // if error, display an error
     if (error) {
         return <p>Error!</p>
     }
 
-    if (!recipe) {
+    if (!recipes) {
         // if no Recipe loaded yet, display 'loading'
         return <p>...loading ...please wait</p>
-    } else if (recipe.length === 0) {
+    } else if (recipes.length === 0) {
         // otherwise if there ARE no Recipe, display that message
         return <p>No recipes yet, go add some!</p>
     }
 
     // once we have an array of Recipe, loop over them
-    // produce one card for every recipe
-    const recipeCards = recipe.map(recipe => (
-        <Card key={ recipe.id } style={{ width: '30%', margin: 5 }}>
-            <Card.Header>{ recipe.fullTitle }</Card.Header>
+    // produce one card for every recipes
+    
+    const recipeCards = recipes.map(recipes => (
+        <Card key={ recipes.id } style={{ width: '30%', margin: 5 }}>
+            <Card.Header>{ recipes.fullTitle }</Card.Header>
             <Card.Body>
                 <Card.Text>
-                    <Link to={`/recipes/${recipe.id}`} className="btn btn-info">View { recipe.username }</Link>
+                    <Link to={`/recipes/${recipes.id}`} className="btn btn-info">View { recipes.username }</Link>
                 </Card.Text>
             </Card.Body>
         </Card>
     ))
-
+    console.log('this is usernameID', recipes.id)
     // return some jsx, a container with all the recipecards
     return (
         <div className="container-md" style={ cardContainerStyle }>
