@@ -69,22 +69,33 @@ const RecipeIndex = (props) => {
         //         </Card.Text>
         //     </Card.Body>
         // </Card>
+        
         <div className='post'>
         {/* header -> profile pic & username */}
         <div className="post_header">
             <Avatar
                 className='post_avatar'
                 alt='UserPhoto'
+                // this is where users will have uploaded profile pictures
                 src=''
                 />
             <h3>{recipes.owner}</h3>
+            {/* this should be the user's @ */}
         </div>
         
         {/* image */}
-        <img className='post_image' src={ imageUrl } />
+        <img className='post_image' src=/*{ imageUrl }*/ 'https://user-images.githubusercontent.com/2351721/31314483-7611c488-ac0e-11e7-97d1-3cfc1c79610e.png'/>
         
         {/* username & caption */}
-        <h4 className='post_text'><strong><a href='/recipes/${recipes.id}' style={{textDecoration:"none", color: 'grey'}}> { recipes.owner }</a>{/*username*/}</strong> { caption }</h4>
+        <h4 className='post_text'><strong><a href='/recipes/${recipes.id}' style={{textDecoration:"none", color: 'grey'}}> { recipes.owner }:</a>{/*username*/}</strong> { caption }Caption.. Caption.. blah blah</h4>
+
+        {/* Like Post */}
+        <i className="material-icons" style={{color: 'red'}}>favorite</i>
+
+        {/* Comments */}
+        <input type='text' placeholder='add a comment'/>
+
+
 
     </div>
     ))
