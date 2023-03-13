@@ -84,7 +84,7 @@ const RecipeIndex = (props) => {
         <img className='post_image' src={ imageUrl } />
         
         {/* username & caption */}
-        <h4 className='post_text'><strong><a href='/recipes/${recipes.id}'>View { recipes.owner }</a>{/*username*/}:</strong> { caption }</h4>
+        <h4 className='post_text'><strong><a href='/recipes/${recipes.id}' style={{textDecoration:"none", color: 'grey'}}> { recipes.owner }</a>{/*username*/}</strong> { caption }</h4>
 
     </div>
     ))
