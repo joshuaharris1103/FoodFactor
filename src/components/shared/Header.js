@@ -1,3 +1,4 @@
+import { Avatar } from '@material-ui/core'
 import React, { Fragment } from 'react'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
@@ -30,7 +31,12 @@ const authenticatedOptions = (
 		</Nav.Link >
 		<Nav.Link className='m-2'>
 			<Link to='profile' style={linkStyle}>
-				Profile
+				<Avatar 
+				className='header_avatar'
+                alt='UserPhoto'
+				style={{width: '10%', height: '115%', borderRadius: '50%'}}
+                // this is where users will have uploaded profile pictures
+                src='' /> 
 			</Link>
 		</Nav.Link>
 	</>

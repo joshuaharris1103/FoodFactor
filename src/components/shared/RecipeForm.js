@@ -5,6 +5,13 @@ const recipeForm = (props) => {
 
     return (
         <Container className="justify-content-center">
+            <div className='card' 
+            style= {{margin: '10px auto', 
+            maxWidth: '75%', 
+            padding: '20px', 
+            textAlign:'center'}}>
+
+            
             <h3>{heading}</h3>
             <Form onSubmit={handleSubmit}>
                 <Form.Group className="m-2">
@@ -40,6 +47,7 @@ const recipeForm = (props) => {
                 </Form.Group>
                 <Button className="m-2" type="submit">Submit</Button>
             </Form>
+                </div>
         </Container>
     )
 }
