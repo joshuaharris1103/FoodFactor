@@ -14,14 +14,14 @@ import ChangePassword from './components/auth/ChangePassword'
 import CreateRecipe from './components/recipes/CreateRecipe'
 import ShowRecipe from './components/recipes/ShowRecipe'
 import Profile from './components/pages/Profile'
+import { ProSidebarProvider } from 'react-pro-sidebar'
 
 const App = () => {
 	
 	const [user, setUser] = useState(null)
 	const [msgAlerts, setMsgAlerts] = useState([])
 	
-	console.log('user in app', user)
-	console.log('message alerts', msgAlerts)
+	// console.log('message alerts', msgAlerts)
 	const clearUser = () => {
 		console.log('clear user ran')
 		setUser(null)
@@ -44,7 +44,9 @@ const App = () => {
 
 	return (
 		<Fragment>
-			<Header user={user} />
+			<ProSidebarProvider>
+				<Header user={user} />
+			</ProSidebarProvider>
 			<Routes>
 				<Route path='/' 
 				element={
@@ -91,7 +93,7 @@ const App = () => {
 						</RequireAuth>}
 				/>
 				<Route 
-				path='recipes/:id'
+				path='recipes/:_id'
 				element={ <ShowRecipe user={user} msgAlert={msgAlert} />}
 				/>
 			</Routes>

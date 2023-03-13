@@ -11,10 +11,20 @@ import messages from '../shared/AutoDismissAlert/messages'
 
 // this is a styling object. they're a quick easy way add focused css properties to our react components
 const cardContainerStyle = {
+    margin: '10px',
+    border: '10px',
+    width: '80%',
+    maxWidth: '100%',
+    padding: '20px',
     display: 'flex',
     flexFlow: 'row wrap',
     justifyContent: 'center'
 }
+{/* <div className='card' 
+            style= {{margin: '10px auto', 
+            maxWidth: '75%', 
+            padding: '20px', 
+            textAlign:'center'}}> */}
 
 // RecipeIndex will make a request to the API for all Recipe
 // once it receives a response, display a card for each recipes
@@ -85,7 +95,7 @@ const RecipeIndex = (props) => {
         
         {/* image */}
         <img className='post_image' src=/*{ imageUrl }*/ 'https://user-images.githubusercontent.com/2351721/31314483-7611c488-ac0e-11e7-97d1-3cfc1c79610e.png'/>
-        
+        <Link to={`/recipes/${recipes.id}`} className="btn btn-info">View Recipe { recipes.recipeName }</Link>
         {/* username & caption */}
         <h4 className='post_text'><strong><a href='/recipes/${recipes.id}' style={{textDecoration:"none", color: 'grey'}}> { recipes.owner }:</a>{/*username*/}</strong> { caption }Caption.. Caption.. blah blah</h4>
 
@@ -99,7 +109,7 @@ const RecipeIndex = (props) => {
 
     </div>
     ))
-    console.log('this is usernameID', recipes.id)
+    console.log('this is usernameID', recipes._id)
     // return some jsx, a container with all the recipecards
     return (
         <div className="container-md" style={ cardContainerStyle }>

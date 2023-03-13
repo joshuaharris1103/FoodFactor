@@ -6,6 +6,8 @@ import messages from '../shared/AutoDismissAlert/messages'
 
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
+import { Nav } from 'react-bootstrap'
+import SignOut from './SignOut'
 
 const SignIn = (props) => {
 	// constructor(props) {
@@ -16,6 +18,7 @@ const SignIn = (props) => {
 	// 		password: '',
 	// 	}
 	// }
+    const [username, setUsername] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
@@ -44,6 +47,7 @@ const SignIn = (props) => {
 			)
 			.then(() => navigate('/'))
 			.catch((error) => {
+                setUsername('')
                 setEmail('')
                 setPassword('')
 				msgAlert({
@@ -56,9 +60,25 @@ const SignIn = (props) => {
 
     return (
         <div className='row'>
-            <div className='col-sm-10 col-md-8 mx-auto mt-5'>
-                <h3>Sign In</h3>
+            <div className='card' 
+            style= {{margin: '100px auto', 
+            maxWidth: '40%', 
+            padding: '20px', 
+            textAlign:'center'}}>
+                <h3>FoodFactor</h3>
+                <br/>
                 <Form onSubmit={onSignIn}>
+                    <Form.Group controlId='username'>
+                        <Form.Label>Username</Form.Label>
+                        <Form.Control
+                            required
+                            type='username'
+                            name='username'
+                            value={username}
+                            placeholder='Enter username'
+                            onChange={e => setUsername(e.target.value)}
+                        />
+                    </Form.Group>
                     <Form.Group controlId='email'>
                         <Form.Label>Email address</Form.Label>
                         <Form.Control
@@ -70,6 +90,7 @@ const SignIn = (props) => {
                             onChange={e => setEmail(e.target.value)}
                         />
                     </Form.Group>
+                    <br/>
                     <Form.Group controlId='password'>
                         <Form.Label>Password</Form.Label>
                         <Form.Control
@@ -81,9 +102,12 @@ const SignIn = (props) => {
                             onChange={e => setPassword(e.target.value)}
                         />
                     </Form.Group>
+                    <br/>
                     <Button variant='primary' type='submit'>
                         Submit
                     </Button>
+                    <br/>
+                    <a href='/sign-up' style={{textDecoration: 'none', color: 'grey'}}><strong>Dont Have Account?</strong></a>
                 </Form>
             </div>
         </div>

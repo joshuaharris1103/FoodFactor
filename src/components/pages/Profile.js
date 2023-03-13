@@ -3,7 +3,7 @@ import React from 'react';
 import RecipeIndex from '../recipes/RecipeIndex';
 import './post.css'
 
-const Profile = ({ username, caption, imageUrl }) => {
+const Profile = () => {
     
     return (
         <div style= {{maxWidth: '550px', margin:'0px auto'}}>

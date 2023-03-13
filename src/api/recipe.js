@@ -14,14 +14,14 @@ export const getAllRecipes = (user) => {
 }
 
 // READ -> Show
-export const getOneRecipe = (id) => {
-    return axios(`${apiUrl}/recipes/${id}`)
+export const getOneRecipe = (_id) => {
+    return axios(`${apiUrl}/recipes/${_id}`)
 }
 
 // Create (create a Recipe)
 export const createRecipe = (user, newRecipe) => {
     console.log('this is the user', user)
-    console.log('this is the newPet', newRecipe)
+    console.log('this is the new recipe', newRecipe)
     return axios({
         url: `${apiUrl}/recipes`,
         method: 'POST',
@@ -35,11 +35,22 @@ export const createRecipe = (user, newRecipe) => {
 // Update (update a Recipe)
 export const updateRecipe = (user, updatedRecipe) => {
     return axios({
-        url: `${apiUrl}/recipes/${updatedRecipe._id}`,
+        url: `${apiUrl}/recipes/${updatedRecipe.id}`,
         method: 'PATCH',
         headers: {
             Authorization: `Token token=${user.token}`
         },
         data: { Recipe: updatedRecipe }
+    })
+}
+
+// Delete (delete a Recipe)
+export const removeRecipe = (user, recipeId) => {
+    return axios({
+        url: `${apiUrl}/recipes/${recipeId}`,
+        method: 'DELETE',
+        headers: {
+            Authorization: `Token token=${user.token}`
+        }
     })
 }

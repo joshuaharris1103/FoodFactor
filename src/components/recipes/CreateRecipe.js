@@ -59,7 +59,7 @@ const CreateRecipe = (props) => {
 
         createRecipe(user, recipe)
             // first we'll nav to the show page
-            .then(res => { navigate(`/recipes/${res.data.recipes.id}`)})
+            .then(res => { navigate(`/recipes/${res.data.recipes.id}`) })
             console.log(recipe.id)
             // we'll also send a success message
             .then(() => {

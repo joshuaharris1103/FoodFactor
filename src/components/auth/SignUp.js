@@ -18,6 +18,7 @@ const SignUp = (props) => {
 	// 		passwordConfirmation: '',
 	// 	}
 	// }    
+    const [username, setUsername] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [passwordConfirmation, setPasswordConfirmation] = useState('')
@@ -29,7 +30,7 @@ const SignUp = (props) => {
 
 		const { msgAlert, setUser } = props
 
-        const credentials = {email, password, passwordConfirmation}
+        const credentials = {username, email, password, passwordConfirmation}
 
 		signUp(credentials)
 			.then(() => signIn(credentials))
@@ -43,6 +44,7 @@ const SignUp = (props) => {
 			)
 			.then(() => navigate('/'))
 			.catch((error) => {
+                setUsername('')
                 setEmail('')
                 setPassword('')
                 setPasswordConfirmation('')
@@ -57,9 +59,25 @@ const SignUp = (props) => {
 
     return (
         <div className='row'>
-            <div className='col-sm-10 col-md-8 mx-auto mt-5'>
+            <div className='card' 
+            style= {{margin: '100px auto', 
+            maxWidth: '40%', 
+            padding: '20px', 
+            textAlign:'center'}}>
                 <h3>Sign Up</h3>
+                <br/>
                 <Form onSubmit={onSignUp}>
+                    <Form.Group controlId='username'>
+                        <Form.Label>Username</Form.Label>
+                        <Form.Control
+                            required
+                            name='username'
+                            value={username}
+                            placeholder='Create username'
+                            onChange={e => setUsername(e.target.value)}
+                        />
+                    </Form.Group>
+                    <br/>
                     <Form.Group controlId='email'>
                         <Form.Label>Email address</Form.Label>
                         <Form.Control
@@ -71,6 +89,7 @@ const SignUp = (props) => {
                             onChange={e => setEmail(e.target.value)}
                         />
                     </Form.Group>
+                    <br/>
                     <Form.Group controlId='password'>
                         <Form.Label>Password</Form.Label>
                         <Form.Control
@@ -82,6 +101,7 @@ const SignUp = (props) => {
                             onChange={e => setPassword(e.target.value)}
                         />
                     </Form.Group>
+                    <br/>
                     <Form.Group controlId='passwordConfirmation'>
                         <Form.Label>Password Confirmation</Form.Label>
                         <Form.Control
@@ -93,6 +113,7 @@ const SignUp = (props) => {
                             onChange={e => setPasswordConfirmation(e.target.value)}
                         />
                     </Form.Group>
+                    <br/>
                     <Button variant='primary' type='submit'>
                         Submit
                     </Button>
