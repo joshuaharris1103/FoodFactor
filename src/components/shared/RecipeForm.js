@@ -19,8 +19,8 @@ const recipeForm = (props) => {
                     <Form.Label>Recipe Name:</Form.Label>
                     <Form.Control 
                         placeholder="What is your recipe's name?"
-                        name="name"
-                        id="name"
+                        name="recipe name"
+                        id="recipe name"
                         value={ recipe?.recipeName }
                         onChange={handleChange}
                     />

@@ -95,7 +95,7 @@ const RecipeIndex = (props) => {
                 // this is where users will have uploaded profile pictures
                 src=''
                 />
-            <h3>{ recipe.username }</h3>
+            <h3>{ recipe._id }</h3>
             {/* <h3>{ user.username }</h3> this display's logged in user's @ */}
             {/* this should be the user's @ */}
         </div>
@@ -108,7 +108,7 @@ const RecipeIndex = (props) => {
 
         {/* Like Post */}
         {/* <h6>{recipes.likes.length}</h6> */}
-        <h6>{recipes.recipeName}</h6>
+        <h6>{recipe.recipeName}</h6>
         <i className="material-icons" style={{color: 'grey'}}>thumb_up</i>
         <i className="material-icons" style={{color: 'grey'}}>thumb_down</i>
         <br/>
