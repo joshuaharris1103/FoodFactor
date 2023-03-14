@@ -20,11 +20,11 @@ const authenticatedOptions = (
 			&#127968;Home
 			</Link>
 		</Nav.Link >
-		<Nav.Link className='m-2'>
-			<Link to='change-password' style={linkStyle}>
+		{/* <Nav.Link className='m-2'>
+			<Link to='/recipes' style={linkStyle}>
 			&#128269;Search
 			</Link>
-		</Nav.Link >
+		</Nav.Link > */}
 		<Nav.Link className='m-2'>
 			<Link to='create-recipe' style={linkStyle}>
 			&#128736;Create

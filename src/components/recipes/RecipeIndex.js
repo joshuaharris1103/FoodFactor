@@ -34,7 +34,7 @@ const RecipeIndex = (props) => {
     console.log('these are the recipes in index', recipes)
 
     // pull the message alert (msgAlert) from props
-    const { user, msgAlert, caption, imageUrl } = props
+    const { user, msgAlert, caption, image, recipeName } = props
 
     // get our Recipe from the api when the component mounts
     useEffect(() => {
@@ -70,6 +70,11 @@ const RecipeIndex = (props) => {
     // once we have an array of Recipe, loop over them
     // produce one card for every recipes
     
+    console.log('owner is',recipes.owner)
+    console.log('caption is',recipes.caption)
+    console.log('name is',recipes.name)
+    console.log('id is',recipes.id)
+    console.log('_id is',recipes._id)
     const recipeCards = recipes.map(recipes => (
         // <Card key={ recipes.id } style={{ width: '30%', margin: 5 }}>
         //     <Card.Header>{ recipes.fullTitle }</Card.Header>
@@ -89,18 +94,26 @@ const RecipeIndex = (props) => {
                 // this is where users will have uploaded profile pictures
                 src=''
                 />
-            <h3>{recipes.owner}</h3>
+            <h3>{ recipes.username }</h3>
+            {/* <h3>{ user.username }</h3> this display's logged in user's @ */}
             {/* this should be the user's @ */}
         </div>
         
         {/* image */}
-        <img className='post_image' src=/*{ imageUrl }*/ 'https://user-images.githubusercontent.com/2351721/31314483-7611c488-ac0e-11e7-97d1-3cfc1c79610e.png'/>
+        <img className='post_image' src={ recipes.image }/>
         <Link to={`/recipes/${recipes.id}`} className="btn btn-info">View Recipe { recipes.recipeName }</Link>
         {/* username & caption */}
-        <h4 className='post_text'><strong><a href='/recipes/${recipes.id}' style={{textDecoration:"none", color: 'grey'}}> { recipes.owner }:</a>{/*username*/}</strong> { caption }Caption.. Caption.. blah blah</h4>
+        <h4 className='post_text'><strong><a href='/recipes/${recipes.id}' style={{textDecoration:"none", color: 'grey'}}> { recipes._id }:</a>{/*username*/}</strong> { recipes.caption }</h4>
 
         {/* Like Post */}
-        <i className="material-icons" style={{color: 'red'}}>favorite</i>
+        {/* <h6>{recipes.likes.length}</h6> */}
+        <h6>{recipes.recipeName}</h6>
+        <i className="material-icons" style={{color: 'grey'}}>thumb_up</i>
+        <i className="material-icons" style={{color: 'grey'}}>thumb_down</i>
+        <br/>
+        <br/>
+        <h6>Add to Meal Plan<i className="material-icons" style={{color: 'red'}}>favorite</i></h6>
+        
 
         {/* Comments */}
         <input type='text' placeholder='add a comment'/>
@@ -109,7 +122,8 @@ const RecipeIndex = (props) => {
 
     </div>
     ))
-    console.log('this is usernameID', recipes._id)
+    console.log('this is usernameID', recipes._id) 
+    // the id shows in line 102 but not 121?////////////////////////////
     // return some jsx, a container with all the recipecards
     return (
         <div className="container-md" style={ cardContainerStyle }>

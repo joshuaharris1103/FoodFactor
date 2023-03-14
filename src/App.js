@@ -93,7 +93,7 @@ const App = () => {
 						</RequireAuth>}
 				/>
 				<Route 
-				path='recipes/:_id'
+				path='recipes/:id'
 				element={ <ShowRecipe user={user} msgAlert={msgAlert} />}
 				/>
 			</Routes>

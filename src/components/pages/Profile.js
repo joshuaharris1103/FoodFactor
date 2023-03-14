@@ -1,5 +1,5 @@
 import { Avatar } from '@material-ui/core';
-import React from 'react';
+import React, { useEffect } from 'react'
 import RecipeIndex from '../recipes/RecipeIndex';
 import './post.css'
 
@@ -27,7 +27,7 @@ const Profile = () => {
                     </div>
                 </div>
                 <div className="gallery">
-                    {RecipeIndex}
+                    { RecipeIndex }
                 </div>
             </div>
         </div>

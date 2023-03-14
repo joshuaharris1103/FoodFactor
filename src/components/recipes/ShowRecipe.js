@@ -19,7 +19,7 @@ const ShowRecipe = (props) => {
     const navigate = useNavigate()
     const { user, msgAlert } = props
     const [ updated, setUpdated ] = useState(false)
-    
+
     // console.log('msgAlert in ShowRecipe props', msgAlert)
 
     useEffect(() => {

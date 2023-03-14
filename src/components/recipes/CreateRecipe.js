@@ -27,27 +27,11 @@ const CreateRecipe = (props) => {
         setRecipe(prevRecipe => {
             const updatedName = e.target.name
             let updatedValue = e.target.value
-
             console.log('this is the input type', e.target.type)
-
-            // to handle a number, we look at the type, and parse a string to an integer
-            if (e.target.type === 'number') {
-                updatedValue = parseInt(e.target.value)
-            }
-
-            // to handle a checkbox, we can check the name, and change the value that is output. Checkboxes only know if they are checked or not
-            if (updatedName === 'adoptable' && e.target.checked) {
-                updatedValue = true
-            } else if (updatedName === 'adoptable' && !e.target.checked) {
-                updatedValue = false
-            }
-            
             const updatedRecipe = {
                 [updatedName] : updatedValue
             }
-            
             console.log('the Recipe', updatedRecipe)
-
             return {
                 ...prevRecipe, ...updatedRecipe
             }
@@ -59,8 +43,8 @@ const CreateRecipe = (props) => {
 
         createRecipe(user, recipe)
             // first we'll nav to the show page
-            .then(res => { navigate(`/recipes/${res.data.recipes.id}`) })
-            console.log(recipe.id)
+            .then(res => { navigate(`/recipes/${res.data.recipes._id}`)})
+            console.log('the new created id', recipe.id)
             // we'll also send a success message
             .then(() => {
                 msgAlert({
