@@ -36,6 +36,7 @@ const RecipeIndex = (props) => {
     // pull the message alert (msgAlert) from props
     const { user, msgAlert, caption, image, recipeName } = props
 
+    console.log('this is your user auth token', user.token)
     // get our Recipe from the api when the component mounts
     useEffect(() => {
         getAllRecipes(user)
@@ -75,7 +76,7 @@ const RecipeIndex = (props) => {
     console.log('name is',recipes.name)
     console.log('id is',recipes.id)
     console.log('_id is',recipes._id)
-    const recipeCards = recipes.map(recipes => (
+    const recipeCards = recipes.map(recipe => (
         // <Card key={ recipes.id } style={{ width: '30%', margin: 5 }}>
         //     <Card.Header>{ recipes.fullTitle }</Card.Header>
         //     <Card.Body>
@@ -94,16 +95,16 @@ const RecipeIndex = (props) => {
                 // this is where users will have uploaded profile pictures
                 src=''
                 />
-            <h3>{ recipes.username }</h3>
+            <h3>{ recipe.username }</h3>
             {/* <h3>{ user.username }</h3> this display's logged in user's @ */}
             {/* this should be the user's @ */}
         </div>
         
         {/* image */}
-        <img className='post_image' src={ recipes.image }/>
-        <Link to={`/recipes/${recipes.id}`} className="btn btn-info">View Recipe { recipes.recipeName }</Link>
+        <img className='post_image' src={ recipe.image }/>
+        <Link to={`/recipes/${recipe._id}`} className="btn btn-info">View Recipe { recipe.recipeName }</Link>
         {/* username & caption */}
-        <h4 className='post_text'><strong><a href='/recipes/${recipes.id}' style={{textDecoration:"none", color: 'grey'}}> { recipes._id }:</a>{/*username*/}</strong> { recipes.caption }</h4>
+        <h4 className='post_text'><strong><a href='/recipes/${recipes.id}' style={{textDecoration:"none", color: 'grey'}}> { recipe._id }:</a>{/*username*/}</strong> { recipe.caption }</h4>
 
         {/* Like Post */}
         {/* <h6>{recipes.likes.length}</h6> */}

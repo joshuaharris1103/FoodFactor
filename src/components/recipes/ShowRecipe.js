@@ -23,17 +23,17 @@ const ShowRecipe = (props) => {
     // console.log('msgAlert in ShowRecipe props', msgAlert)
 
     useEffect(() => {
-        getOneRecipe(id)
-            .then(res => setRecipe(res.data.recipe))
-            .catch(err => {
-                msgAlert({
-                    heading: 'Error getting recipes',
-                    message: messages.getRecipeFailure,
-                    variant: 'danger'
-                })
+        getOneRecipe(user, id)
+        .then(res => setRecipe(res.data.recipe))
+        .catch(err => {
+            msgAlert({
+                heading: 'Error getting recipes',
+                message: messages.getRecipeFailure,
+                variant: 'danger'
             })
+        })
     }, [updated])
-
+    
     // here's where our deleteRecipe function will be called
     const deleteRecipe = () => {
         removeRecipe(user, recipe.id)

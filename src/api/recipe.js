@@ -14,8 +14,14 @@ export const getAllRecipes = (user) => {
 }
 
 // READ -> Show
-export const getOneRecipe = (_id) => {
-    return axios(`${apiUrl}/recipes/${_id}`)
+export const getOneRecipe = (user, _id) => {
+    return axios({
+        url: `${apiUrl}/recipes/${_id}`,
+        method: 'GET',
+        headers: {
+            Authorization: `Token token=${user.token}`
+        }
+    })
 }
 
 // Create (create a Recipe)

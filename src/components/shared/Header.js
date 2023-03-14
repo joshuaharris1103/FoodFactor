@@ -3,7 +3,7 @@ import React, { Fragment } from 'react'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
 import { Link } from 'react-router-dom'
-import { Sidebar, Menu, MenuItem, SubMenu } from 'react-pro-sidebar'
+// import { Sidebar, Menu, MenuItem, SubMenu } from 'react-pro-sidebar'
 const linkStyle = {
     color: 'black',
     textDecoration: 'none'
@@ -65,7 +65,7 @@ const unauthenticatedOptions = (
 // )
 
 const Header = ({ user }) => (
-	<Navbar fixed="top" expand="lg" variant="light" bg="light">
+	<Navbar expand="lg" variant="light" bg="light">
 		<Navbar.Brand>
             <Link to='/' style={linkStyle}>
                 FoodFactor

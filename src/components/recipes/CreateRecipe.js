@@ -7,7 +7,6 @@ import RecipeForm from '../shared/RecipeForm'
 import { useNavigate } from 'react-router-dom'
 
 const CreateRecipe = (props) => {
-    // pull out our props
     const { user, msgAlert } = props
 
     // set up(pull our navigate function from useNavigate)
@@ -17,8 +16,7 @@ const CreateRecipe = (props) => {
     const [recipe, setRecipe] = useState({
         RecipeName: '',
         Caption: '',
-        ImageUrl: '',
-        
+        Image: '',
     })
 
     const onChange = (e) => {
@@ -43,7 +41,7 @@ const CreateRecipe = (props) => {
 
         createRecipe(user, recipe)
             // first we'll nav to the show page
-            .then(res => { navigate(`/recipes/${res.data.recipes._id}`)})
+            .then(res => { navigate(`/recipes/${res.data.recipe._id}`)})
             console.log('the new created id', recipe.id)
             // we'll also send a success message
             .then(() => {
