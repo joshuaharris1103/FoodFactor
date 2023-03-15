@@ -46,7 +46,7 @@ export const updateRecipe = (user, updatedRecipe) => {
         headers: {
             Authorization: `Token token=${user.token}`
         },
-        data: { Recipe: updatedRecipe }
+        data: { recipe: updatedRecipe }
     })
 }
 

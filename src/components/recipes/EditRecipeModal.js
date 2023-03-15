@@ -10,12 +10,12 @@ const EditRecipeModal = (props) => {
     // destructure our props
     const { user, show, handleClose, updateRecipe, msgAlert, triggerRefresh } = props
 
-    const [recipe, setrecipe] = useState(props.recipe)
+    const [recipe, setRecipe] = useState(props.recipe)
 
     const onChange = (e) => {
         e.persist()
         
-        setrecipe(prevRecipe => {
+        setRecipe(prevRecipe => {
             const updatedName = e.target.name
             let updatedValue = e.target.value
 
@@ -65,7 +65,8 @@ const EditRecipeModal = (props) => {
             <Modal.Header closeButton />
             <Modal.Body>
                 <RecipeForm 
-                    recipe={recipe} 
+                    recipe={recipe}
+                    updateRecipe={updateRecipe} 
                     handleChange={onChange} 
                     handleSubmit={onSubmit} 
                     heading="Update Recipe"

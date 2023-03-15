@@ -15,6 +15,17 @@ import NewCommentModal from '../comments/NewCommentModal'
 // then we need to make a request to the api
 // when we retrieve a recipe from the api, we'll render the data on the screen
 
+const cardContainerStyle = {
+    margin: '10px',
+    border: '10px',
+    width: '80%',
+    maxWidth: '100%',
+    padding: '20px',
+    display: 'flex',
+    flexFlow: 'row wrap',
+    justifyContent: 'center'
+}
+
 const commentCardContainerLayout = {
     display: 'flex',
     justifyContent: 'center',
@@ -49,7 +60,7 @@ const ShowRecipe = (props) => {
 
 // here's where our deleteRecipe function will be called
 const deleteRecipe = () => {
-    removeRecipe(user, recipe.id)
+    removeRecipe(user, recipe._id)
         // upon success, send the appropriate message and redirect users
         .then(() => {
             msgAlert({
@@ -91,8 +102,8 @@ const deleteRecipe = () => {
 
     return (
         <>
-            <Container className="m-2">
-                <div className='post'>
+            <Container className="m-2" >
+                <div className='post' >
         {/* header -> profile pic & username */}
         <div className="post_header">
             <Avatar

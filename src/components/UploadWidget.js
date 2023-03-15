@@ -1,6 +1,16 @@
-import { useEffect, useRef } from "react"
+import { useEffect, useState, useRef } from "react"
+import { Button } from "react-bootstrap"
+import { createRecipe } from "../api/recipe"
+import messages from './shared/AutoDismissAlert/messages'
 
-const UploadWidget = () => {
+
+
+const UploadWidget = (props) => {
+    const {user, msgAlert, recipe} = props
+    const [pictureURL, setPictureURL] = useState(null)
+    const [state, setState] = useState(false)
+    const [uploadPicture, setUploadPicture] = useState(null)
+
     const cloudinaryRef = useRef()
     const widgetRef = useRef()
     useEffect (() => {
@@ -8,14 +18,42 @@ const UploadWidget = () => {
         widgetRef.current = cloudinaryRef.current.createUploadWidget({
             cloudName: 'djnnpzwtn',
             uploadPreset: 'qnugql8k'
-        }, function(error,result) {
-            console.log(result)
+        }, (error,result) => { 
+
+
+            if (result.event === 'success') {
+            setPictureURL(result.info.secure_url)
+            console.log('this is pictureURL in if loop',pictureURL)
+            setState(true)
+        } 
         })
-    }, [])
+    })
+        
+        useEffect(()=> {
+            if (state === true) { 
+                recipe.image.push(pictureURL)
+                console.log('this is post after recipe.picture.push', recipe)
+                setState(false)
+                setUploadPicture(
+                    createRecipe(user, recipe)
+                        .catch(() => {
+                            msgAlert({
+                                heading: 'Oh No!',
+                                message: messages.updateRecipeFailure,
+                                variant: 'danger'
+                            })
+                    })
+                )
+            }
+            
+        })
+
     return (
-        <button onClick={() => widgetRef.current.open()}>
+        <>
+        <Button onClick={() => {widgetRef.current.open()}}>
             Upload
-        </button>
+        </Button>
+        </>
     )
 }
 

@@ -38,6 +38,16 @@ const recipeForm = (props) => {
                     />
                 </Form.Group>
                 <Form.Group className="m-2">
+                    <Form.Label>Ingredients:</Form.Label>
+                    <Form.Control 
+                        placeholder="Add ingredients"
+                        name="ingredient"
+                        id="ingredient"
+                        value={ recipe?.ingredient }
+                        onChange={handleChange}
+                    />
+                </Form.Group>
+                <Form.Group className="m-2">
                     <Form.Label>Media:</Form.Label>
                     {/* <Form.Control 
                         type="string"
