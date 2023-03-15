@@ -1,12 +1,20 @@
+// Createrecipe needs to render a form
+// that form should build a recipe object in state
+// the form should make an axios post request when submitted
+// we should send an alert upon success or failure
+// on success: component should redirect our user to the new recipe show page
+// on failure: component should send the message and remain visible
 import { useState } from 'react'
 import { createRecipe } from '../../api/recipe'
 import { createRecipeSuccess, createRecipeFailure } from '../shared/AutoDismissAlert/messages'
 import RecipeForm from '../shared/RecipeForm'
+import UploadWidget from '../UploadWidget'
 
 // bring in the useNavigate hook from react-router-dom
 import { useNavigate } from 'react-router-dom'
 
 const CreateRecipe = (props) => {
+    // pull out our props
     const { user, msgAlert } = props
 
     // set up(pull our navigate function from useNavigate)
@@ -16,7 +24,7 @@ const CreateRecipe = (props) => {
     const [recipe, setRecipe] = useState({
         recipeName: '',
         caption: '',
-        image: '',
+        image: ''
     })
 
     const onChange = (e) => {
@@ -25,11 +33,15 @@ const CreateRecipe = (props) => {
         setRecipe(prevRecipe => {
             const updatedName = e.target.name
             let updatedValue = e.target.value
+
             console.log('this is the input type', e.target.type)
+            
             const updatedRecipe = {
                 [updatedName] : updatedValue
             }
-            console.log('the Recipe', updatedRecipe)
+            
+            console.log('the recipe', updatedRecipe)
+
             return {
                 ...prevRecipe, ...updatedRecipe
             }
@@ -41,8 +53,7 @@ const CreateRecipe = (props) => {
 
         createRecipe(user, recipe)
             // first we'll nav to the show page
-            .then(res => { navigate(`/recipes/${res.data.recipe._id}`)
-            console.log('the new created id', recipe.id)}) 
+            .then(res => { navigate(`/recipes/${res.data.recipe._id}`)})
             // we'll also send a success message
             .then(() => {
                 msgAlert({
@@ -59,15 +70,14 @@ const CreateRecipe = (props) => {
                     variant: 'danger'
                 })
             })
-
     }
 
     return (
         <RecipeForm 
-            Recipe={recipe}
+            recipe={recipe}
             handleChange={onChange}
             handleSubmit={onSubmit}
-            heading="Create"
+            heading="Add a new recipe!"
         />
     )
 }

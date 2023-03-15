@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react'
 import Card from 'react-bootstrap/Card'
 import { Link } from 'react-router-dom'
-import { Avatar } from '@material-ui/core'
+import { Avatar, ListItemSecondaryAction } from '@material-ui/core'
+// import likes from '../pages/likes'
 
 // api function from our api file
 import { getAllRecipes } from '../../api/recipe'
@@ -77,8 +78,8 @@ const RecipeIndex = (props) => {
         //         </Card.Text>
         //     </Card.Body>
         // </Card>
-        
-        <div className='post'>
+        <Card key={ recipe.id }>
+        <div  className='post'>
         {/* header -> profile pic & username */}
         <div className="post_header">
             <Avatar
@@ -87,7 +88,7 @@ const RecipeIndex = (props) => {
                 // this is where users will have uploaded profile pictures
                 src=''
                 />
-            <h3>{ recipe._id }</h3>
+            { recipe.owner ? <h3>{ recipe.owner.username }</h3> : null }
             {/* <h3>{ user.username }</h3> this display's logged in user's @ */}
             {/* this should be the user's @ */}
         </div>
@@ -108,8 +109,9 @@ const RecipeIndex = (props) => {
         {/* Like Post */}
         {/* <h6>{recipes.likes.length}</h6> */}
         <h6>{recipe.recipeName}</h6>
-        <i className="material-icons" style={{color: 'grey'}}>thumb_up</i>
-        <i className="material-icons" style={{color: 'grey'}}>thumb_down</i>
+        <i className="material-icons"  style={{color: 'grey'}}>thumb_up</i>
+        <i className="material-icons"  style={{color: 'grey'}}>thumb_down</i>
+        <h6>{recipe.likes.length} Likes</h6>
         <br/>
         <br/>
         <h6>Add to Meal Plan<i className="material-icons" style={{color: 'red'}}>favorite</i></h6>
@@ -118,9 +120,8 @@ const RecipeIndex = (props) => {
         {/* Comments */}
         <input type='text' placeholder='add a comment'/>
 
-
-
     </div>
+    </Card>
     ))
     console.log('owner is',recipes.owner)
     console.log('caption is',recipes.caption)
@@ -130,6 +131,9 @@ const RecipeIndex = (props) => {
     console.log('this is usernameID', recipes._id) 
     // the id shows in line 102 but not 121?////////////////////////////
     // return some jsx, a container with all the recipecards
+
+        
+
     return (
         <div className="container-md" style={ cardContainerStyle }>
             { recipeCards }

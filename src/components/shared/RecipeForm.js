@@ -1,5 +1,7 @@
 import { Form, Button, Container } from 'react-bootstrap'
-import Uploader from './Uploader'
+// import Uploader from './Uploader'
+// import likes from '../pages/likes'
+import UploadWidget from '../UploadWidget'
 
 const recipeForm = (props) => {
     const { recipe, handleChange, handleSubmit, heading } = props
@@ -37,14 +39,15 @@ const recipeForm = (props) => {
                 </Form.Group>
                 <Form.Group className="m-2">
                     <Form.Label>Media:</Form.Label>
-                    <Form.Control 
+                    {/* <Form.Control 
                         type="string"
                         placeholder="Will Add Photo Functionality here soon..."
                         name="image"
                         id="image"
                         value={ recipe?.image }
                         onChange={handleChange}
-                    />
+                    /> */}
+                    <UploadWidget />
                 </Form.Group>
                 <Button className="m-2" type="submit">Submit</Button>
             </Form>
