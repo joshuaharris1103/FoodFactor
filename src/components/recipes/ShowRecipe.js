@@ -69,10 +69,11 @@ const ShowRecipe = (props) => {
             })
     }
 
+    
+
     if(!recipe) {
         return <p>loading...</p>
     }
-    console.log('this is recipe:', recipe)
     
     return (
         <>
@@ -86,16 +87,17 @@ const ShowRecipe = (props) => {
                 // this is where users will have uploaded profile pictures
                 src=''
                 />
-            <h3>{ recipe._id }</h3>
+            <h3>{ recipe.owner }</h3>
             {/* <h3>{ user.username }</h3> this display's logged in user's @ */}
             {/* this should be the user's @ */}
         </div>
         
         {/* image */}
-        <img className='post_image' src={ recipe.image }/>
+        {recipe.image && <img className='post_image' src={recipe.image} />}
+
 
         {/* username & caption */}
-        <h4 className='post_text'><strong><a href='/recipes/${recipes.id}' style={{textDecoration:"none", color: 'grey'}}> { recipe._id }:</a>{/*username*/}</strong> { recipe.caption }</h4>
+        <h4 className='post_text'><strong><a href='/recipes/${recipes.id}' style={{textDecoration:"none", color: 'grey'}}> { recipe.owner }:</a>{/*username*/}</strong> { recipe.caption }</h4>
 
         {/* Like Post */}
         {/* <h6>{recipes.likes.length}</h6> */}
@@ -151,3 +153,4 @@ const ShowRecipe = (props) => {
 }
 
 export default ShowRecipe
+

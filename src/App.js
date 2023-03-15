@@ -86,18 +86,18 @@ const App = () => {
 					</RequireAuth>}
 				/>
 				<Route
-						path='/create-recipe'
-						element={
-						<RequireAuth user={user}>
-							<CreateRecipe msgAlert={msgAlert} user={user} />
-						</RequireAuth>}
+					path='/create-recipe'
+					element={
+					<RequireAuth user={user}>
+						<CreateRecipe msgAlert={msgAlert} user={user} />
+					</RequireAuth>}
 				/>
 				<Route 
-						path='recipes/:id'
-						element={
-						<RequireAuth user={user}>
-							<ShowRecipe user={user} msgAlert={msgAlert} />
-						</RequireAuth> }
+					path='recipes/:id'
+					element={
+					<RequireAuth user={user}>
+						<ShowRecipe user={user} msgAlert={msgAlert} />
+					</RequireAuth> }
 				/>
 			</Routes>
 			{msgAlerts.map((msgAlert) => (

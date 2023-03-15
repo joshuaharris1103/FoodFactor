@@ -50,15 +50,12 @@ const RecipeIndex = (props) => {
                 setError(true)
             })
     }, [])
-
-    console.log("here are your recipes", recipes)
     
     // if error, display an error
     if (error) {
         return <p>Error!</p>
     }
 
-    // console.log('this is owner', recipes._id)
 
     if (!recipes) {
         // if no Recipe loaded yet, display 'loading'
@@ -71,11 +68,6 @@ const RecipeIndex = (props) => {
     // once we have an array of Recipe, loop over them
     // produce one card for every recipes
     
-    console.log('owner is',recipes.owner)
-    console.log('caption is',recipes.caption)
-    console.log('name is',recipes.name)
-    console.log('id is',recipes.id)
-    console.log('_id is',recipes._id)
     const recipeCards = recipes.map(recipe => (
         // <Card key={ recipes.id } style={{ width: '30%', margin: 5 }}>
         //     <Card.Header>{ recipes.fullTitle }</Card.Header>
@@ -101,10 +93,17 @@ const RecipeIndex = (props) => {
         </div>
         
         {/* image */}
-        <img className='post_image' src={ recipe.image }/>
-        <Link to={`/recipes/${recipe._id}`} className="btn btn-info">View Recipe { recipe.recipeName }</Link>
+        <Link to={`/recipes/${recipe._id}`}>
+            <img className='post_image' src={ recipe.image }/>
+        </Link>
+        <Link to={`/recipes/${recipe._id}`} className="btn btn-info">
+            View Recipe { recipe.recipeName }
+        </Link>
         {/* username & caption */}
-        <h4 className='post_text'><strong><a href='/recipes/${recipes.id}' style={{textDecoration:"none", color: 'grey'}}> { recipe._id }:</a>{/*username*/}</strong> { recipe.caption }</h4>
+        <h4 className='post_text'><strong>
+            <Link to={`/recipes/${recipe._id}`} style={{textDecoration:"none", color: 'grey'}}>
+                { recipe._id }:
+            </Link>{/*username*/}</strong> { recipe.caption }</h4>
 
         {/* Like Post */}
         {/* <h6>{recipes.likes.length}</h6> */}
@@ -123,6 +122,11 @@ const RecipeIndex = (props) => {
 
     </div>
     ))
+    console.log('owner is',recipes.owner)
+    console.log('caption is',recipes.caption)
+    console.log('name is',recipes.name)
+    console.log('id is',recipes.id)
+    console.log('_id is',recipes._id)
     console.log('this is usernameID', recipes._id) 
     // the id shows in line 102 but not 121?////////////////////////////
     // return some jsx, a container with all the recipecards

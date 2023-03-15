@@ -14,9 +14,9 @@ const CreateRecipe = (props) => {
     console.log('this is navigate', navigate)
 
     const [recipe, setRecipe] = useState({
-        RecipeName: '',
-        Caption: '',
-        Image: '',
+        recipeName: '',
+        caption: '',
+        image: '',
     })
 
     const onChange = (e) => {
@@ -41,8 +41,8 @@ const CreateRecipe = (props) => {
 
         createRecipe(user, recipe)
             // first we'll nav to the show page
-            .then(res => { navigate(`/recipes/${res.data.recipe._id}`)})
-            console.log('the new created id', recipe.id)
+            .then(res => { navigate(`/recipes/${res.data.recipe._id}`)
+            console.log('the new created id', recipe.id)}) 
             // we'll also send a success message
             .then(() => {
                 msgAlert({
